@@ -1,0 +1,5 @@
+localhost: 127.0.0.1 [28/Oct/2016:14:53:56 +0300] "GET / HTTP/1.1" 200 775 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393"
+jq-course.local: 127.0.0.1 [28/Oct/2016:14:54:13 +0300] "POST /post-form.php HTTP/1.1" 200 86 "http://jq-course.local:60/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393"
+default: 127.0.0.1 [28/Oct/2016:14:54:35 +0300] "-" 408 - "-" "-"
+default: 127.0.0.1 [28/Oct/2016:14:54:35 +0300] "-" 408 - "-" "-"
+default: 127.0.0.1 [28/Oct/2016:14:54:35 +0300] "-" 408 - "-" "-"

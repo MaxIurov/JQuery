@@ -1,0 +1,13 @@
+[Fri Oct 28 14:53:50 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
+[Fri Oct 28 14:53:50 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
+[Fri Oct 28 14:53:50 2016] [notice] Apache/2.2.31 (Win32) mod_ssl/2.2.31 OpenSSL/1.0.1p configured -- resuming normal operations
+[Fri Oct 28 14:53:50 2016] [notice] Server built: Jul 16 2015 11:30:50
+[Fri Oct 28 14:53:50 2016] [notice] Parent: Created child process 8260
+[Fri Oct 28 14:53:50 2016] [notice] Disabled use of AcceptEx() WinSock2 API
+[Fri Oct 28 14:53:50 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
+[Fri Oct 28 14:53:51 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
+[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Child process is running
+[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Acquired the start mutex.
+[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Starting 32 worker threads.
+[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Listening on port 61.
+[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Listening on port 60.

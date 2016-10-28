@@ -1,0 +1,19 @@
+﻿"Apache 2.2";Документация;http://httpd.apache.org/docs/2.2/
+"Apache 2.4";Документация;http://httpd.apache.org/docs/2.4/
+Bind;Документация;http://bind10.isc.org/docs/bind10-guide.html
+MariaDB;Документация;https://mariadb.com/kb/en/mariadb-documentation/
+Memcached;Документация;https://code.google.com/p/memcached/wiki/NewStart
+MongoDB;Документация;http://docs.mongodb.org/manual/
+"MySQL 5.1";Документация;http://dev.mysql.com/doc/refman/5.1/en/index.html
+"MySQL 5.5";Документация;http://dev.mysql.com/doc/refman/5.5/en/index.html
+"MySQL 5.6";Документация;http://dev.mysql.com/doc/refman/5.6/en/index.html
+Nginx;Документация;http://nginx.org/ru/docs/
+PHP;Документация;http://www.php.net/manual/ru/
+"PostgreSQL 9.2";Документация;http://www.postgresql.org/docs/9.2/interactive/index.html
+"PostgreSQL 9.3";Документация;http://www.postgresql.org/docs/9.3/interactive/index.html
+Redis;Документация;http://redis.io/documentation
+"Домашняя страница";"Open Server";http://open-server.ru
+"Патч TCP для XP";"Фиксы и патчи";%realprogdir%\modules\system\xp_tcp_fix.exe
+Руководство;"Open Server";http://open-server.ru/docs/
+"Тюнинг SSD";"Фиксы и патчи";%realprogdir%\modules\system\setup_ssd.bat
+"Форум Open Server";"Open Server";http://open-server.ru/forum/
