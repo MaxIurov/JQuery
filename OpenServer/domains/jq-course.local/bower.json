@@ -1,0 +1,22 @@
+{
+  "name": "JQuery course",
+  "homepage": "https://github.com/MaxIurov/JQuery",
+  "authors": [
+    "UNIVERSE\\myurov <myurov@dataart.com>"
+  ],
+  "description": "Max Iurov JQuery Course",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "^1.12.1",
+    "handlebars": "^4.0.5"
+  }
+}

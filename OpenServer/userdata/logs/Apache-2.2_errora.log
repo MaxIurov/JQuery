@@ -1,13 +1,17 @@
-[Fri Oct 28 14:53:50 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
-[Fri Oct 28 14:53:50 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
-[Fri Oct 28 14:53:50 2016] [notice] Apache/2.2.31 (Win32) mod_ssl/2.2.31 OpenSSL/1.0.1p configured -- resuming normal operations
-[Fri Oct 28 14:53:50 2016] [notice] Server built: Jul 16 2015 11:30:50
-[Fri Oct 28 14:53:50 2016] [notice] Parent: Created child process 8260
-[Fri Oct 28 14:53:50 2016] [notice] Disabled use of AcceptEx() WinSock2 API
-[Fri Oct 28 14:53:50 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
-[Fri Oct 28 14:53:51 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
-[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Child process is running
-[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Acquired the start mutex.
-[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Starting 32 worker threads.
-[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Listening on port 61.
-[Fri Oct 28 14:53:51 2016] [notice] Child 8260: Listening on port 60.
+[Wed Nov 02 14:29:35 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
+[Wed Nov 02 14:29:36 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
+[Wed Nov 02 14:29:36 2016] [notice] Apache/2.2.31 (Win32) mod_ssl/2.2.31 OpenSSL/1.0.1p configured -- resuming normal operations
+[Wed Nov 02 14:29:36 2016] [notice] Server built: Jul 16 2015 11:30:50
+[Wed Nov 02 14:29:36 2016] [notice] Parent: Created child process 10688
+[Wed Nov 02 14:29:36 2016] [notice] Disabled use of AcceptEx() WinSock2 API
+[Wed Nov 02 14:29:36 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
+[Wed Nov 02 14:29:37 2016] [warn] Init: Name-based SSL virtual hosts only work for clients with TLS server name indication support (RFC 4366)
+[Wed Nov 02 14:29:37 2016] [notice] Child 10688: Child process is running
+[Wed Nov 02 14:29:37 2016] [notice] Child 10688: Acquired the start mutex.
+[Wed Nov 02 14:29:37 2016] [notice] Child 10688: Starting 32 worker threads.
+[Wed Nov 02 14:29:37 2016] [notice] Child 10688: Listening on port 61.
+[Wed Nov 02 14:29:37 2016] [notice] Child 10688: Listening on port 60.
+[Wed Nov 02 14:59:08 2016] [error] [client 127.0.0.1] File does not exist: C:/_MyProjects/JQuery/OpenServer/domains/jq-course.local/favicon.ico
+[Wed Nov 02 20:24:40 2016] [error] [client 127.0.0.1] File does not exist: C:/_MyProjects/JQuery/OpenServer/domains/jq-course.local/bower_components/handlebars1, referer: http://jq-course.local:60/
+[Wed Nov 02 20:24:40 2016] [error] [client 127.0.0.1] File does not exist: C:/_MyProjects/JQuery/OpenServer/domains/jq-course.local/bower_components/handlebars1, referer: http://jq-course.local:60/
+[Wed Nov 02 20:24:41 2016] [error] [client 127.0.0.1] File does not exist: C:/_MyProjects/JQuery/OpenServer/domains/jq-course.local/bower_components/handlebars1, referer: http://jq-course.local:60/

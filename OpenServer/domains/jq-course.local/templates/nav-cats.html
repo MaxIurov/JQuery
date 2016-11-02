@@ -1,8 +1,5 @@
-<h3 class="${catclass}">
-    <a href="#">${catname}</a>
+{{#each this}}
+<h3 class={{id}}>
+    <a href="#">{{title}}</a>
 </h3>
-<div>
-    <ul>
-	{{html subitems}}
-    </ul>
-</div>
+{{/each}}
