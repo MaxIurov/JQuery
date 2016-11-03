@@ -253,6 +253,7 @@ form.search { padding: 0; margin: 0; }
     position: relative;
 }
 #inlaygreet p {
+    color: green;
     padding: 17px 0 0 10px;
 }
 #closeme {
