@@ -115,9 +115,59 @@ var navAccordionActive = (function() {
 		}
 	};
 })();
+//url cache
+var getUrlData = (function() {
+	var timeout = 3000;
+	var cachedUrls = [];
+	// for (var i = 0; i < localStorage.length; i++) {
+	// 	if (localStorage.key(i).indexOf('jqcourse_') !== -1) {
+	// 		localStorage.removeItem(localStorage.key(i));
+	// 	}
+	// }
+	//{url,data,time}
+	for (var i = 0; i < localStorage.length; i++) {
+		if (localStorage.key(i).indexOf('jqcourse_') !== -1) {
+			var cachedUrl = JSON.parse( localStorage.getItem(localStorage.key(i)) );
+			cachedUrls.push({url: cachedUrl.url, data: cachedUrl.data, time: cachedUrl.time});
+		}
+	}
+	console.log ("getUrlData -> ",cachedUrls);
+
+	function saveToCache(url) {
+		$.get(url, function (data) {
+			var obj = {url: url, data: data, time: new Date().getTime()};
+			localStorage.setItem('jqcourse_' + url, JSON.stringify(obj));
+			console.log("saveToCache -> ",obj);
+			return data;
+		});
+	}
+	return {
+		get: function(url) {
+			var retData;
+			for (var j = 0; j < cachedUrls.length; j++) {
+				if (cachedUrls[j].url === url) {
+					if ((new Date().getTime() - cachedUrls[j].time) < timeout) {
+						retData = cachedUrls[j].data;
+					}
+				}
+			}
+			if (retData === undefined) {
+				retData = saveToCache(url);
+			}
+			console.log("return:get -> ",retData);
+			return retData;
+		}
+	};
+})();
 
 //MAIN function
 $(document).ready(function() {
+	$(".loader").fadeOut(200);
+
+	var prom = getUrlData.get('mocks/search.json.php');
+	prom.success(function(data) {
+		alert(data);
+	});
 	//search autocomplete
 	$.getJSON('mocks/search.json.php', function(data) {
 		$("#searchform #pojam").autocomplete({
@@ -130,25 +180,24 @@ $(document).ready(function() {
 		});
 	});
 	//navigation menu
+	$("#navaccordion").hide();
+	$("#navaccordion_loading").show();
 	$.getJSON('mocks/navigation.json.php', function(data) {
-		var tparent_name = "nav-cats";
-		var tchild_name = "nav-subitem";
-		get_template(tparent_name).done(function (parent_data) {
-			get_template(tchild_name).done(function (child_data) {
-				var template = Handlebars.compile(parent_data);
-				Handlebars.registerPartial("subitemtemplate",child_data);
-				var html = template(data);
-				$("#navaccordion").html(html);
-				$("#navaccordion").accordion({
-					heightStyle: "content",
-					active: navAccordionActive.get(),
-					animate: 200,
-					activate: function(event,ui) {
-						var active = $( "#navaccordion" ).accordion( "option", "active" );
-						navAccordionActive.set(active);
-					}
-				});
-			});
+		console.log(data);
+		var template = Handlebars.templates['nav-cats'];
+		var html = template(data);
+		$("#navaccordion").html(html);
+		$("#navaccordion").accordion({
+			heightStyle: "content",
+			active: navAccordionActive.get(),
+			animate: 200,
+			activate: function(event,ui) {
+				var active = $( "#navaccordion" ).accordion( "option", "active" );
+				navAccordionActive.set(active);
+			}
+		});
+		$("#navaccordion_loading").fadeOut("slow",function() {
+			$("#navaccordion").fadeIn("slow");
 		});
 	});
 	//login dialog box
@@ -159,23 +208,31 @@ $(document).ready(function() {
 		});
 	});
 	//myNewPlugin
-	$("#additional").myNewPlugin();
+	//$("#additional").myNewPlugin();
 	//slider-pagination
 
 	//quote service
 	$.ajax({
 		url: "http://quote-service.local:60/api.php",
 		dataType: "jsonp",
-		timeout: 300,
+		timeout: 900,
+		beforeSend: function() {
+			$("#additional").hide();
+			$("#additional_loading").show();
+		},
 		success: function(data) {
-			get_template("lovely-quote").done(function (templ) {
-				var template = Handlebars.compile(templ);
-				var html = template(data);
-				$("#loveluquot").html(html);
-			})
+			var template = Handlebars.templates['lovely-quote'];
+			var templateData = template(data);
+			$("#loveluquot").html(templateData);
+			$("#additional_loading").fadeOut("slow",function() {
+				$("#additional").fadeIn("slow");
+			});
 		},
 		error: function(jqXhr, textStatus, errorMessage) {
 			$("#loveluquot").text("Error: " + errorMessage);
+			$("#additional_loading").fadeOut("slow",function() {
+				$("#additional").fadeIn("slow");
+			});
 		}
 	});
 });

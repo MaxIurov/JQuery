@@ -4,13 +4,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Language" content="English" />
 	<meta name="Description" content="Internet Jobs" />
-	<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/start/jquery-ui.css">
+<!-- 	<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/start/jquery-ui.css"> -->
 	<link rel="stylesheet" type="text/css" href="images/style.css" />
+	<link rel="stylesheet" type="text/css" href="images/jquery-ui.css" />
 	<link rel="stylesheet" type="text/css" href="images/mystylez.css" />
 	<title>Internet News</title>
 
     </head>
     <body>
+    <div class="loader"></div>
 	<div id="header">
 	    <div id="logo">
 		<p class="slogan"><b>Connecting Online people</b><br />Sharing IT trends</p>
@@ -27,8 +29,6 @@
 	</div>
 
 	<div class="content">
-
-
 
 	    <div id="articles">
 		<div id="left">
@@ -93,6 +93,9 @@
 		    <div id="rightmenu">
 			<div id="navaccordion">
 			</div>
+			<div id="navaccordion_loading">
+			<img src="images/ajax-loader.gif" alt="" />
+			</div>
 		    </div>
 
 		    <div class="rightarticle">
@@ -115,6 +118,7 @@
 	<div id="additional">
 	    <p><b>Lovely Quote: </b><span id="loveluquot">There may be no 'I' in team, but there's a 'ME' if you look hard enough. - David Brent</span></p>
 	</div>
+	<div id="additional_loading"><b>Loading...</b></div>
 
 	<div id="whiteline"></div>
 
@@ -127,6 +131,7 @@
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="bower_components/jquery-ui/jquery-ui.js"></script>
 	<script src="bower_components/handlebars/handlebars.js"></script>
+	<script src="templates/templates_all.js"></script>
 	<script src="bower_components/jquery-validation/dist/jquery.validate.js"></script>
 	<script src="mynewplugin.js"></script>
 	<script src="index.js"></script>
