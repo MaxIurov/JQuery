@@ -1,16 +1,30 @@
+<h1>New posts</h1>
+{{#each stories}}
 <div id="newsitem">
-    <h2><a href="${urls.title}">${title}</a></h2>
-    <p>${desc}</p>
+    <h2><a href="{{href}}">{{title}}</a></h2>
+    <p>{{description}}</p>
     <p class="date">
-	<span id="author">Posted by: <i>${name}</i></span>
+	<span id="author">Posted by: <i>{{user.fullname}}</i></span>
 	<span>
-	    <img src="images/more.gif" alt="" /> <a href="${urls.more}">Read more</a> 
+	    <img src="images/more.gif" alt="" /> <a href="{{link}}">Read more</a> 
 	</span>
 	<span>
-	    <img src="images/comment.gif" alt="" /> <a href="${urls.comments}">Comments(${count})</a> 
+	    <img src="images/comment.gif" alt="" /> <a href="{{shorturl.short_url}}">Comments({{comments}})</a> 
 	</span>
 	<span>
-	    <img src="images/timeicon.gif" alt="" /> ${date}
+	    <img src="images/timeicon.gif" alt="" /> {{submit_date}}
 	</span>
     </p>
+</div>
+{{/each}}
+<div id="pagination">
+    <div id="prev">
+	<button {{buttPrev}} onclick="buttonGotoPage({{pagePrev}})">Prev</button>
+    </div>
+    <div id="pagenum">
+	<span>Page {{page}}</span>
+    </div>
+    <div id="next">
+	<button {{buttNext}} onclick="buttonGotoPage({{pageNext}})">Next</button>
+    </div>
 </div>

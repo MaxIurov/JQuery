@@ -1,6 +1,3 @@
-function get_template(tname) {
-	return $.ajax("templates/"+tname+".html");
-}
 //custom validator
 $.validator.addMethod("myAlphaNumeric", function (value, element) {
 	return /^[a-zA-Z0-9]*$/.test(value);
@@ -115,15 +112,38 @@ var navAccordionActive = (function() {
 		}
 	};
 })();
+function getSliderPagination(page_num) {
+	//myNewPlugin
+	$("#newsbox").hide();
+	$("#newsbox_loading").show();
+	$("#newsbox").myNewPlugin({
+		newsOnPage: application_config.newsPerPage,
+		currentPage: page_num,
+		finished: function() {
+			$("#newsbox_loading").fadeOut("slow",function() {
+				$("#newsbox").fadeIn("slow");
+			});
+		}
+	});
+}
+function buttonGotoPage(page_num) {
+	window.location.hash = '#' + page_num;
+	//getSliderPagination(page_num);
+}
+function hashChanged() {
+	var page_num = 1;
+	if (window.location.hash !== '') {
+		var hash_num = parseInt(window.location.hash.substring(1));
+		if (hash_num > 0) {
+			page_num = hash_num;
+		}
+	}
+	getSliderPagination(page_num);
+}
 //url cache
 var getUrlData = (function() {
-	var timeout = 3000;
+	var timeout = 20000;
 	var cachedUrls = [];
-	// for (var i = 0; i < localStorage.length; i++) {
-	// 	if (localStorage.key(i).indexOf('jqcourse_') !== -1) {
-	// 		localStorage.removeItem(localStorage.key(i));
-	// 	}
-	// }
 	//{url,data,time}
 	for (var i = 0; i < localStorage.length; i++) {
 		if (localStorage.key(i).indexOf('jqcourse_') !== -1) {
@@ -131,45 +151,50 @@ var getUrlData = (function() {
 			cachedUrls.push({url: cachedUrl.url, data: cachedUrl.data, time: cachedUrl.time});
 		}
 	}
-	console.log ("getUrlData -> ",cachedUrls);
-
-	function saveToCache(url) {
-		$.get(url, function (data) {
-			var obj = {url: url, data: data, time: new Date().getTime()};
-			localStorage.setItem('jqcourse_' + url, JSON.stringify(obj));
-			console.log("saveToCache -> ",obj);
-			return data;
-		});
-	}
 	return {
-		get: function(url) {
+		get: function(url,callback) {
 			var retData;
 			for (var j = 0; j < cachedUrls.length; j++) {
 				if (cachedUrls[j].url === url) {
 					if ((new Date().getTime() - cachedUrls[j].time) < timeout) {
 						retData = cachedUrls[j].data;
+						callback(retData);
+						return;
 					}
 				}
 			}
 			if (retData === undefined) {
-				retData = saveToCache(url);
+				$.get(url, function (data) {
+					var obj = {url: url, data: data, time: new Date().getTime()};
+					localStorage.setItem('jqcourse_' + url, JSON.stringify(obj));
+					for (var i = 0; i < cachedUrls.length; i++) {
+						if (cachedUrls[i].url === url) {
+							cachedUrls.splice(i,1);
+						}
+					}
+					cachedUrls.push(obj);
+					callback(data);
+				});
 			}
-			console.log("return:get -> ",retData);
-			return retData;
+			return;
+		},
+		clear: function() {
+			for (var i = 0; i < localStorage.length; i++) {
+				if (localStorage.key(i).indexOf('jqcourse_') !== -1) {
+					localStorage.removeItem(localStorage.key(i));
+				}
+			}
 		}
 	};
 })();
 
 //MAIN function
 $(document).ready(function() {
-	$(".loader").fadeOut(200);
-
-	var prom = getUrlData.get('mocks/search.json.php');
-	prom.success(function(data) {
-		alert(data);
-	});
+	$(".loader").fadeOut("slow");
 	//search autocomplete
-	$.getJSON('mocks/search.json.php', function(data) {
+	$("#searchform").hide();
+	$("#searchform_loading").show();
+	getUrlData.get('mocks/search.json.php', function(data) {
 		$("#searchform #pojam").autocomplete({
 			source: data.titles,
 			select: function(event, ui) {
@@ -178,12 +203,14 @@ $(document).ready(function() {
 				//$("#searchform .search").submit();
 			}
 		});
+		$("#searchform_loading").fadeOut("slow",function() {
+			$("#searchform").fadeIn("slow");
+		});
 	});
 	//navigation menu
 	$("#navaccordion").hide();
 	$("#navaccordion_loading").show();
-	$.getJSON('mocks/navigation.json.php', function(data) {
-		console.log(data);
+	getUrlData.get('mocks/navigation.json.php', function (data) {
 		var template = Handlebars.templates['nav-cats'];
 		var html = template(data);
 		$("#navaccordion").html(html);
@@ -203,13 +230,15 @@ $(document).ready(function() {
 	//login dialog box
 	$("#hlogin a").click(function (event) {
 		event.preventDefault();
-		$.get("templates/login/login-register-overlay.html", function (templ) {
+		getUrlData.get("templates/login/login-register-overlay.html",function (templ) {
 			dialog_LogReg.create_dialog(templ);
 		});
 	});
-	//myNewPlugin
-	//$("#additional").myNewPlugin();
 	//slider-pagination
+	hashChanged();
+	window.onhashchange = function () {
+		hashChanged();
+	}
 
 	//quote service
 	$.ajax({
