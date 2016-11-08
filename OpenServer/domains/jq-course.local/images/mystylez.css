@@ -1,8 +1,7 @@
-#navaccordion {
-	color: blue;
+#navaccordion .ui-icon{
+	display: none;
 }
 #navaccordion .ui-state-default {
-	color: blue;
 	background: none;
 	border: none;
 }
