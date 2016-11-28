@@ -22,6 +22,7 @@
 					if (startIdx >= jsonData.stories.length) {
 						startIdx = jsonData.stories.length - settings.newsOnPage;
 						currPage = Math.floor(jsonData.stories.length / settings.newsOnPage) + 1;
+						btnNext = 'disabled';
 					}
 					if (startIdx <= 0) {
 						btnPrev = 'disabled';
